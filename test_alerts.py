@@ -124,6 +124,9 @@ def test_explain_alert(client: TestClient) -> None:
     assert data["alert_id"] == alert_id
     assert "critical" in data["explanation"]
     assert "cpu_usage" in data["explanation"]
+    assert data["explanation"].endswith(
+        "Acknowledged by: Not yet acknowledged."
+    )
     generated_at = datetime.fromisoformat(data["generated_at"])
     assert generated_at.tzinfo is not None
 
@@ -187,4 +190,3 @@ def test_explain_alert_with_zero_threshold_does_not_crash(
 
     assert response.status_code == 200
     assert "threshold of 0.0" in response.json()["explanation"]
-
