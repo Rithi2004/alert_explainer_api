@@ -35,6 +35,7 @@ def get_alert(alert_id: int, db: Session = Depends(get_db)) -> models.Alert:
 
 @router.post("/{alert_id}/explain", response_model=ExplainResponse)
 def explain_alert(alert_id: int, db: Session = Depends(get_db)) -> ExplainResponse:
+    """Return an explanation for the alert, or 404 if it does not exist."""
     alert = db.query(models.Alert).filter(models.Alert.id == alert_id).first()
     if alert is None:
         raise HTTPException(status_code=404, detail="Alert not found")
