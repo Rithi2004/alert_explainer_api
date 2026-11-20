@@ -35,6 +35,7 @@ The service uses SQLite and creates `alerts.db` in the working directory when ru
 | `metric_name` | string | Name of the measured metric. |
 | `metric_value` | number | Current metric value. |
 | `threshold` | number | Comparison threshold. |
+| `resolved_by` | string or null | Optional person or system that acknowledged the alert. |
 | `created_at` | datetime | Database-generated creation time. |
 
 When creating an alert, provide `title`, `severity`, `source`, `metric_name`, `metric_value`, and `threshold`. The API assigns `id` and `created_at`.

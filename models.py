@@ -15,6 +15,7 @@ class Alert(Base):
     metric_name = Column(String, nullable=False)
     metric_value = Column(Float, nullable=False)
     threshold = Column(Float, nullable=False)
+    resolved_by = Column(String, nullable=True)
     created_at = Column(
         DateTime(timezone=True),
         default=lambda: datetime.now(timezone.utc),

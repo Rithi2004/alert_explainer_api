@@ -13,6 +13,7 @@ class AlertCreate(BaseModel):
     metric_name: str
     metric_value: float
     threshold: float
+    resolved_by: str | None = None
 
 
 class AlertOut(AlertCreate):
